@@ -1,5 +1,5 @@
-# Life Cycle Assessment and Eco-Design of Electric Drones
+# Introduction to Life Cycle Assessment and Eco-Design
 
-This course aims to provide an introduction on the use of Python and Jupyter notebooks for the life cycle assessment of multi-rotor drones, and link the environmental analysis with the sizing process.
+This course aims to provide an introduction on life cycle assessment.
 
 *Written by Félix Pollet (ISAE-SUPAERO), Toulouse, France.*
