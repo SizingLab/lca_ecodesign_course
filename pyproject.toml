@@ -1,11 +1,9 @@
 [tool.poetry]
 name = "lca_course"
 version = "0.0.0"
-description = "Parametric LCA"
+description = "LCA and EcoDesign"
 authors = [
     "Félix POLLET <felix.pollet@isae-supaero.fr>",
-    "Scott DELBECQ <scott.delbecq@isae-supaero.fr>",
-    "Marc BUDINGER <marc.budinger@insa-toulouse.fr>"
 ]
 
 license = "MIT"
@@ -32,19 +30,18 @@ classifiers = [
 # the commit fail because "files were modified by this hook". In that case,
 # doing again the commit including changes in docs/requirements.txt will succeed.
 python = ">=3.10, <3.11"
-#matplotlib = "^3.6.2"
-#numpy = "1.23.5"
-#brightway2 = "^2.3"
 #bw2io = "0.8.8"  # compatibility with ecoinvent >3.9 only. For ecoinvent 3.8, switch to 0.8.7
 lca-algebraic-dev = "^1.0.5"
 networkx = "*"
 pyvis = "*"
-#scipy = "1.8.0"
 jupyterlab = "^3.3.0"
 jupyter-client = "!=7.0.0, !=7.0.1, !=7.0.2, !=7.0.3, !=7.0.4, !=7.0.5"
 notebook = "^6.0"
 jupyterlab_myst = "*"
-
+#tbb = "2021.10.0"
+#intel-openmp = "2023.2.0"
+#eight = "1.0.1"
+#ecoinvent-interface = "2.4.1"
 
 [tool.poetry.extras]
 jupyterlab = ["jupyterlab"]

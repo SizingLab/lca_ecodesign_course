@@ -1,0 +1,5 @@
+lca-algebraic-dev
+networkx
+pyvis
+jupyterlab
+jupyterlab_myst
