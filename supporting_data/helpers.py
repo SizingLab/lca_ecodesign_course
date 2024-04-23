@@ -242,3 +242,64 @@ def graph_activities(user_db: str, model, network_file_path : str):
     os.chdir(old_working_directory)
 
     return net
+
+
+def lca_monte_carlo(model, methods, n_runs, cfs_uncertainty: bool = False, **params,):
+    """
+    Run Monte Carlo simulations to assess uncertainty on the impact categories.
+    Input uncertainties are embedded in EcoInvent activities.
+    Parameters used in the parametric study are frozen.
+    """
+
+    if not isinstance(methods, list):
+        methods = [methods]
+
+    # Freeze params
+    db = model[0]  # get database in which model is defined
+    if agb.helpers._isForeground(db):
+        agb.freezeParams(db, **params)  # freeze parameters
+
+    # Monte Carlo for each impact category with vanilla brightway
+    scores_dict = {}
+    functional_unit = {model: 1}
+
+    if cfs_uncertainty:  # uncertainty on impact methods --> MC must be run for each impact
+        for method in methods:
+            print("### Running Monte Carlo for method " + str(method) + " ###")
+            mc = bw.MonteCarloLCA(functional_unit, method)  # MC on inventory uncertainties (background db)
+            scores = [next(mc) for _ in range(n_runs)]
+            scores_dict[method] = scores
+
+    else:  # TODO: automatically detect if impact method contains uncertain characterization factors
+        def multiImpactMonteCarloLCA(functional_unit, list_methods, iterations):
+            """
+            https://github.com/maximikos/Brightway2_Intro/blob/master/BW2_tutorial.ipynb
+            """
+            # Step 1
+            MC_lca = bw.MonteCarloLCA(functional_unit)
+            MC_lca.lci()
+            # Step 2
+            C_matrices = {}
+            scores_dict = {}
+            # Step 3
+            for method in list_methods:
+                MC_lca.switch_method(method)
+                C_matrices[method] = MC_lca.characterization_matrix
+                scores_dict[method] = []
+            # Step 4
+            #results = np.empty((len(list_methods), iterations))
+            # Step 5
+            for iteration in range(iterations):
+                next(MC_lca)
+                for method_index, method in enumerate(list_methods):
+                    score = (C_matrices[method] * MC_lca.inventory).sum()
+                    # results[method_index, iteration] = score
+                    scores_dict[method].append(score)
+            return scores_dict
+
+        print("### Running Multi-Impacts Monte Carlo (warning: uncertainty restricted to LCI) ###")
+        scores_dict = multiImpactMonteCarloLCA(functional_unit, methods, n_runs)
+
+    df = pd.DataFrame.from_dict(scores_dict, orient='columns')
+
+    return df

@@ -134,16 +134,16 @@ def sizing_optimization(performances, technologies, param_acv, objectif, accurac
 
     # Point de départ pour les variables de conception
     initial_guess = [
-        0.1,    # [m] D_propeller
-        0.01,   # [N.m] T_motor
-        10.0,   # [Wh] E_battery
-        0.1,    # [m] L_arm
+        0.5,    # [m] D_propeller
+        1.0,   # [N.m] T_motor
+        100.0,   # [Wh] E_battery
+        0.5,    # [m] L_arm
     ]
     
     # Bornes sur les variables de conception
     bounds = [
-        (0.1, 0.5),     # [m] D_propeller
-        (0.1, 10.0),   # [N.m] T_motor
+        (0.1, 1.0),     # [m] D_propeller
+        (0.01, 10.0),   # [N.m] T_motor
         (10.0, 1000.0), # [Wh] E_battery
         (0.1, 1.0),     # [m] L_arm
     ]
