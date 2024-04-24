@@ -303,3 +303,5 @@ def lca_monte_carlo(model, methods, n_runs, cfs_uncertainty: bool = False, **par
     df = pd.DataFrame.from_dict(scores_dict, orient='columns')
 
     return df
+
+
