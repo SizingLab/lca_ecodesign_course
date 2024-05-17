@@ -7,8 +7,8 @@ This course aims to provide an introduction on life cycle assessment.
 
 This course requires Python 3.10 or 3.11. 
 
-### With Jupyter Hub
-Log in to [Jupyter Hub](https://jupyter.isae-supaero.fr/) and open a new prompt terminal.
+### With Jupyter Hub (ISAE students)
+Log in to the [Jupyter Hub](https://jupyter.isae-supaero.fr/) of ISAE-SUPAERO and open a new prompt terminal.
 Clone this GitHub repository by running:
 ```{.bash}
 git clone https://github.com/SizingLab/lca_ecodesign_course.git
