@@ -5,6 +5,7 @@ from pyvis.network import Network
 from sympy.parsing.sympy_parser import parse_expr
 import os
 import lca_algebraic as agb
+import brightway2 as bw
 
 
 def plot_lca(results_df, relative=False, custom_units=None):
