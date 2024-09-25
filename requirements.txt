@@ -1,4 +1,4 @@
-lca-algebraic-dev
+lca-algebraic
 networkx
 pyvis
 jupyterlab
