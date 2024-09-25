@@ -13,7 +13,7 @@ Clone this GitHub repository by running:
 ```{.bash}
 git clone https://github.com/SizingLab/lca_ecodesign_course.git
 ```
-Then, open the first notebook and select the `lca course` kernel by clicking on the top right of the notebook. 
+Then, open the first notebook and select the `lca-course-v2` kernel by clicking on the top right of the notebook. 
 You are now ready to start the lab session.
 
 
