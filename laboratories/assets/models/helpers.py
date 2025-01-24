@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 from pyvis.network import Network
 from sympy.parsing.sympy_parser import parse_expr
@@ -257,7 +256,7 @@ def lca_monte_carlo(model, methods, n_runs, cfs_uncertainty: bool = False, **par
 
     # Freeze params
     db = model[0]  # get database in which model is defined
-    if agb.helpers._isForeground(db):
+    if agb.database._isForeground(db):
         agb.freezeParams(db, **params)  # freeze parameters
 
     # Monte Carlo for each impact category with vanilla brightway
